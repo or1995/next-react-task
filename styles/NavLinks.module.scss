@@ -1,0 +1,15 @@
+@import './var.scss';
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 18rem;
+    list-style: none;  
+
+    li {
+        a {
+            font-size: 1.2rem;
+        }
+    }
+}

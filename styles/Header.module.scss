@@ -17,12 +17,15 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        z-index: 100000;
 
         h1 {
             font-size: 5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            
+            opacity: 0;
+            animation: show .8s forwards;
+
             span {
                 
             }
@@ -33,6 +36,8 @@
             font-weight: 300;
             margin-bottom: 1.5rem;
             color: $text-grey-color;
+            opacity: 0;
+            animation: show .9s forwards;
         }
 
         div {
@@ -40,6 +45,8 @@
             align-items: center;
             justify-content: space-between;
             width: 25.8rem;
+            opacity: 0;
+            animation: show 1s forwards;
 
             button {
                 width: 12.5rem;
@@ -62,6 +69,8 @@
             top: 12%;
             left: 20%;
             z-index: 100;
+            opacity: 0;
+            animation: up 1.2s forwards;
         }
 
         &_phototwo {
@@ -74,6 +83,8 @@
             top: 32%;
             left: 40%;
             z-index: 10;
+            opacity: 0;
+            animation: up 1.2s .4s forwards;
         }
     }
 }
@@ -109,11 +120,23 @@
 
 @keyframes up {
     0% {
-        transform: translateY(200%);
+        transform: translateY(4rem);
+        opacity: 0;
     }
 
     100% {
-        transform: translateY(-200%);
+        transform: translateY(0);
+        opacity: 1;
     }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }   
 }
 
