@@ -1,0 +1,20 @@
+@import 'var.scss';
+
+html,body {
+  padding: 0;
+  margin: 0;
+  font-family: $primary-font;
+  background-color: $primary-white-color;
+  color: $text-dark-color;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

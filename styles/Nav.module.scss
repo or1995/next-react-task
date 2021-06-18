@@ -1,0 +1,22 @@
+@import 'var.scss';
+
+.nav {
+    width: 75vw;
+    height: 5rem;
+    border-bottom: solid 1px $primary-very-light-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 20rem;
+        list-style: none;    
+    }
+
+
+
+}
+

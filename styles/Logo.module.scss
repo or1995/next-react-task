@@ -1,0 +1,26 @@
+@import './var.scss';
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    &_orange {
+        height: 3rem;
+        width: .4rem;
+        background-color: $secondary-color;
+    }
+    
+    &_blue {
+        height: 3rem;
+        width: .4rem;
+        background-color: $primary-color;
+    }
+
+    &_text {
+        margin-left: .5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
