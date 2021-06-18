@@ -19,8 +19,8 @@ const header = () => {
                 <h1><span>Welcome</span> to Ecommerce Shop</h1>
                 <h3>Great Products for You.</h3>
                 <div>
-                    <Button type="primary">All Products</Button>
-                    <Button type="secondary">Cart</Button>
+                    <Button type="primary" link="/products">All Products</Button>
+                    <Button type="secondary" link="/cart">Cart</Button>
                 </div>
             </div>
             <div className={classes.header_right}>

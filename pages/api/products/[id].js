@@ -1,7 +1,9 @@
 import {products} from '../../../data';
 
 export default function handler(req, res) {
-    const oneProduct = products.filter(product => product.id === req.query.id);
+    const oneProduct = products.filter(product => {
+            return product.id === parseInt(req.query.id)}
+        );
 
     if(oneProduct.length > 0) {
         res.status(200).json(oneProduct[0]);

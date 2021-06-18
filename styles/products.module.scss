@@ -1,0 +1,9 @@
+@import './var.scss';
+
+.products {
+    margin-top: 4rem;
+    width: 75vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}

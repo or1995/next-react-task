@@ -21,12 +21,18 @@ export const ProductsProvider = (props) => {
     const getCurrentProduct = (id) => {
         fetch(`/api/products/${id}`)
         .then(res => {
+            console.log(res);
             return res.json();
         }).then(res => {
-            setProducts(res);
+            setCurrentProduct(res);
         }).catch(err => {
             console.log(err);
         });
+    }
+
+    const resetCurrentProduct = () => {
+        console.log('unmount');
+        setCurrentProduct(null);
     }
 
     const getCart = () => {
@@ -76,9 +82,11 @@ export const ProductsProvider = (props) => {
 
     return  (<ProductsContext.Provider value={{
         products: products,
+        currentProduct: currentProduct,
         cart: cart,
         getProducts: getProducts,
         getCurrentProduct: getCurrentProduct,
+        resetCurrentProduct: resetCurrentProduct,
         getCart: getCart,
         postToCart: postToCart,
         removeFromCart: removeFromCart

@@ -12,6 +12,7 @@
     border-radius: 2px;
     cursor: pointer;
     transition: all .3s;
+    font-family: $primary-font;
 
     &:hover {
         background-color: lighten($primary-color, 5%);
@@ -32,6 +33,7 @@
     border-radius: 2px;
     cursor: pointer; 
     transition: all .3s;
+    font-family: $primary-font;
 
     &:hover {
         background-color: lighten($primary-color, 5%);

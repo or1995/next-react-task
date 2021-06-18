@@ -44,12 +44,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 25.8rem;
+            width: 27rem;
             opacity: 0;
             animation: show 1s forwards;
 
-            button {
-                width: 12.5rem;
+            a {
+                text-align: center;
+                width: 13.1rem;
             }
         }
     }
