@@ -13,7 +13,7 @@ const Products = () => {
     const [search, setSearch] = useState('');
   
     useEffect(() => {
-        getProducts()
+        getProducts();
     },[])
 
     useEffect(() => {

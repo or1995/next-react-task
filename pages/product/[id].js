@@ -2,13 +2,24 @@ import React, { useContext, useState, useEffect } from 'react';
 import {useRouter} from 'next/router';
 
 import {ProductsContext} from '../../context/ProductsContext';
+import ProductHeader from '../../components/ProductHeader';
+import ProductDescription from '../../components/ProductDescription';
 
 import classes from '../../styles/[id].module.scss';
 
 const Product = () => {
-    const {getCurrentProduct, resetCurrentProduct, currentProduct} = useContext(ProductsContext);
+    const {getCurrentProduct, resetCurrentProduct, currentProduct, getProducts, getCart} = useContext(ProductsContext);
     const router = useRouter();
     const id = router.query.id;
+
+
+  useEffect(() => {
+    if(!currentProduct) {
+      getCurrentProduct();
+      getCart();
+      getProducts();
+    }
+  },[])
 
   useEffect(() => {
     getCurrentProduct(id);
@@ -16,11 +27,12 @@ const Product = () => {
     return resetCurrentProduct();
   },[id])
 
-  return (
+  return currentProduct ?
     <div className={classes.product}>
-      {currentProduct ? <h1>{currentProduct.title}</h1> : null}
-    </div>
-  )
+      <ProductHeader product={currentProduct}/>
+      <ProductDescription product={currentProduct}/>
+    </div> : null;
+  
 }
 
 export default Product;

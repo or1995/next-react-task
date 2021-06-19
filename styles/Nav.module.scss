@@ -1,11 +1,16 @@
 @import 'var.scss';
 
 .nav {
+    position: fixed;
+    top: 0;
+    margin: 0 auto;
     width: 75vw;
     height: 5rem;
     border-bottom: solid 1px $primary-very-light-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 100000000;
+    background-color: $primary-white-color;
 }
 

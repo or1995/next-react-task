@@ -1,0 +1,101 @@
+@import './var.scss';
+
+
+.productheader {
+    width: 100%;
+    height: 35rem;
+    border-bottom: solid 1px $secondary-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+
+    &_imgcontainer {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: lighten($primary-light-color,45%);
+        position: relative;
+        overflow: hidden;
+        
+        div {
+            position: relative;
+            width: 100%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            div {
+                img {
+                    width: 100%;
+                    mix-blend-mode: multiply;
+                }
+            }
+
+        }
+
+    }
+
+    &_infocontainer {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 5rem;
+
+        h2 {
+            font-weight: 300;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        div {
+
+        }
+    }
+}
+
+
+.watermark {
+    font-size: 9rem;
+    font-weight: bold;
+    position: absolute;
+    overflow: visible;
+
+    &_one {
+        top: 2rem;
+        right: -32rem;
+        transform-origin: center;
+        transform: rotate(-90deg);
+        
+        h1 {
+            color: $primary-very-light-color;
+            opacity: .1;
+            user-select: none;
+        }
+    }
+
+    &_two {
+        bottom: 2rem;
+        right: -15rem;
+        transform-origin: center;
+        transform: rotate(90deg);
+
+        h1 {
+            color: $secondary-light-color;
+            opacity: .1;
+            user-select: none;
+        }
+    }
+}

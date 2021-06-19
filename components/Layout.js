@@ -2,7 +2,7 @@ import React from 'react';
 import classes from '../styles/Layout.module.scss';
 
 import Nav from './Nav';
-import Header from './Header';
+import Footer from './Footer';
 
 const Layout = (props) => {
     return (
@@ -11,7 +11,7 @@ const Layout = (props) => {
             <main className={classes.main}>
                 {props.children}
             </main>
-            <h1>Footer</h1>
+            <Footer/>
         </div>
     )
 };

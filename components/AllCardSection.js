@@ -10,8 +10,7 @@ const AllCardSection = (props) => {
             <div className={classes.section_header}>
                 <h3>{props.title}</h3>
                 <div className={classes.section_header_search}>
-                    <input type="text" value={props.searchvalue} onChange={e => {props.searchFun(e.target.value)}}/>
-                    <button>Search</button>
+                    <input type="text" value={props.searchvalue} onChange={e => {props.searchFun(e.target.value)}} placeholder="Search"/>
                 </div>
             </div>
             <div className={classes.section_cards}>

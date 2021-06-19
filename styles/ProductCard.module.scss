@@ -14,14 +14,13 @@
 
     &_imagecontainer {
         width: 100%;
-        height: 50%;
+        height: 11rem;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
         img {
-            height: 90%;
-            width: auto;
             mix-blend-mode: multiply;
         }
     }
