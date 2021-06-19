@@ -20,9 +20,10 @@ export default function Home() {
       setLatestProducts(products.slice(-4));
   }, [products])
 
+  console.log(cart);
+
   return (
     <div>
-      
       <Header/>
       <CardSection title="Latest Products" products={latestProducts}/>
       <CardSection title="Featured Products" products={featuredProducts}/>

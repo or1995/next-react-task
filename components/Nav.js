@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import Logo from './Logo';
 import NavLinks from './NavLinks';
 
+
 import classes from '../styles/Nav.module.scss';
 
-const nav = () => {
+const Nav = () => {
     return(
         <div className={classes.nav}>
             <Logo/>
@@ -14,4 +15,4 @@ const nav = () => {
     )
 }
 
-export default nav;
+export default Nav;

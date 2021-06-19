@@ -10,6 +10,11 @@
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width: 600px) {
+        flex-direction: column-reverse;
+        height: 55rem;
+    }
+
     &_left {
         height: 100%;
         width: 50%;
@@ -19,12 +24,25 @@
         justify-content: center;
         z-index: 100000;
 
+        @media screen and (max-width: 600px) {
+            align-items: center;
+        }
+
         h1 {
             font-size: 5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             opacity: 0;
             animation: show .8s forwards;
+
+            @media screen and (max-width: 925px) {
+                font-size: 3rem;
+            }
+
+            @media screen and (max-width: 600px) {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
 
             span {
                 
@@ -38,6 +56,10 @@
             color: $text-grey-color;
             opacity: 0;
             animation: show .9s forwards;
+
+            @media screen and (max-width: 925px) {
+                font-size: 1.2rem;
+            }
         }
 
         div {
@@ -48,9 +70,20 @@
             opacity: 0;
             animation: show 1s forwards;
 
+            @media screen and (max-width: 925px) {
+                width: 25rem;
+            }
+
+
             a {
                 text-align: center;
                 width: 13.3rem;
+
+                @media screen and (max-width: 925px) {
+                    font-size: .8rem;
+                    width: 12rem;
+                }
+
             }
         }
     }
@@ -72,6 +105,12 @@
             z-index: 100;
             opacity: 0;
             animation: up 1.2s forwards;
+
+            @media screen and (max-width: 925px) {
+                left: 10%;
+                width: 13rem;
+                height: 19rem;
+            }
         }
 
         &_phototwo {
@@ -86,8 +125,25 @@
             z-index: 10;
             opacity: 0;
             animation: up 1.2s .4s forwards;
+
+            @media screen and (max-width: 925px) {
+                width: 13rem;
+                height: 19rem;
+            }
         }
     }
+
+
+    @media screen and (max-width: 1500px) {
+        width: 90vw;
+    }
+
+    @media screen and (max-width: 1366px) {
+        width: 100vw;
+        padding: 0 10rem;
+    }
+
+
 }
 
 .watermark {

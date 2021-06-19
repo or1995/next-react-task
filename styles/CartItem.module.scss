@@ -37,10 +37,11 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        flex: 1;
         
         h3 {
             font-weight: 300;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         h4 {
@@ -50,25 +51,36 @@
     }
 
     &_controls {
-        width: 15rem;
+        width: 20rem;
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        padding-right: .5rem;
+
+        &_delete {
+            width: 7rem !important;
+            margin-left: .5rem !important;
+            background-color: transparent !important;
+            color: $primary-color !important;
+            font-size: 1.2rem !important;
+
+        }
         
         button {
             width: 3rem;
             height: 3rem;
-            background-color: $primary-color;
+            background-color: transparent;
             border: none;
             font-family: $primary-font;
-            color: $text-light-color;
-            font-size: 1.5rem;
+            color: $primary-color;
+            font-size: 1.8rem;
             cursor: pointer;
             transition: all .3s;
 
             &:hover {
                 background-color: lighten($primary-color, 5%);
+                color: $text-light-color;
                 transition: all .3s;
             }
         }

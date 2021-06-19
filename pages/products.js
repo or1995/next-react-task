@@ -10,6 +10,7 @@ const Products = () => {
     const {products, getProducts} = useContext(ProductsContext);
     const [localProducts, setLocalProducts] = useState([])
     const [category, setCategory] = useState('All Products')
+    const [searchedProducts, setSearchedProducts] = useState(null)
     const [search, setSearch] = useState('');
   
     useEffect(() => {
@@ -19,6 +20,14 @@ const Products = () => {
     useEffect(() => {
         setLocalProducts(products)
     },[products])
+
+    useEffect(() => {
+        setSearchedProducts(prevProds => {
+            return localProducts.filter((prod) => {
+                return prod.title.toLowerCase().includes(search.toLowerCase());
+            })
+        })
+    },[search, localProducts])
     
 
     const categoryChoice = cat => {
@@ -41,7 +50,7 @@ const Products = () => {
     return (
         <div className={classes.products}>
             <SidePanel catFun={(cat) => {categoryChoice(cat)}}/>
-            <AllCardSection products={localProducts} searchFun={(item) => {searchSet(item)}} searchvalue={search} title={category}/>
+            <AllCardSection products={searchedProducts ? searchedProducts : localProducts} searchFun={(item) => {searchSet(item)}} searchvalue={search} title={category}/>
         </div>
     )
 }

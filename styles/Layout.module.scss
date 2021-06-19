@@ -15,4 +15,12 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 1.25rem;
+
+  @media screen and (max-width: 1500px) {
+    padding: 0 0;
+  }
+
+  @media screen and (max-width: 1366px) {
+    padding: 0 0;
+  }
 }

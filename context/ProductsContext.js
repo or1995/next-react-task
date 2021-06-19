@@ -30,13 +30,7 @@ export const ProductsProvider = (props) => {
         });
     }
 
-    const resetCurrentProduct = () => {
-        console.log('unmount');
-        setCurrentProduct(null);
-    }
-
     const getCart = () => {
-        console.log('hi');
         fetch('/api/cart')
         .then(res => {
             return res.json();
@@ -53,8 +47,6 @@ export const ProductsProvider = (props) => {
             return product.id === item.id;
         });
 
-        console.log(cart, findProduct);
-
         if(findProduct[0]) {
             const productIndex = cart[0].findIndex(item => {
                 return product.id === item.id
@@ -65,7 +57,7 @@ export const ProductsProvider = (props) => {
             
             const newTotal = cart[1] + product.price;
             const replaceProduct = newCartItems[productIndex];
-
+            console.log('theid', product.id);
             fetch(`/api/cart/${product.id}`, {
                 method: 'PUT',
                 headers: {
@@ -78,7 +70,6 @@ export const ProductsProvider = (props) => {
               })
 
         } else {
-            console.log('helooooooooooooo')
             fetch('/api/cart', {
                 method: 'POST',
                 headers: {
@@ -87,7 +78,6 @@ export const ProductsProvider = (props) => {
                 },
                 body: JSON.stringify({...product, quantity: 1})
               }).then(res => {
-                  console.log('hiiiiiiiiiii');
                 setCart(prevCart => {
                     console.log([[...prevCart[0], {...product, quantity: 1}], prevCart[1] + product.price]);
                     return [[...prevCart[0], {...product, quantity: 1}], prevCart[1] + product.price];
@@ -99,6 +89,23 @@ export const ProductsProvider = (props) => {
     }
 
     const removeFromCart = (id) => {
+        const productIndex = cart[0].findIndex(item => {
+            return id === item.id
+        });
+
+        //cart[0][productIndex].quantity = cart[0][productIndex].quantity + 1;
+        
+        const newTotal = cart[1] - (cart[0][productIndex].quantity * cart[0][productIndex].price);
+
+        console.log(newTotal);
+
+
+        const newCartItems = cart[0].filter(item => {
+            return item.id !== id;
+        })
+
+        console.log(newCartItems);
+        
         fetch(`/api/cart/${id}`, {
             method: 'DELETE',
             headers: {
@@ -106,12 +113,70 @@ export const ProductsProvider = (props) => {
               'Content-Type': 'application/json'
             }
           }).then(res => {
-            setCart(prevCart => {
-                return [...prevCart, product];
-            }).catch(err => {
+            setCart([newCartItems, newTotal]);
+          }).catch(err => {
                 console.log(err);
             });
-        })
+    }
+
+    const increaseCartProduct = (id) => {
+        const findProduct = cart[0].filter(item => {
+            return id === item.id;
+        });
+
+        if(findProduct[0]) {
+            const productIndex = cart[0].findIndex(item => {
+                return id === item.id
+            })
+
+            const newCartItems = cart[0];
+            newCartItems[productIndex].quantity = newCartItems[productIndex].quantity + 1;
+            
+            const newTotal = cart[1] + newCartItems[productIndex].price;
+            const replaceProduct = newCartItems[productIndex];
+
+            fetch(`/api/cart/${id}`, {
+                method: 'PUT',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(replaceProduct)
+              }).then(res => {
+                setCart([newCartItems,newTotal]);
+              })
+        }
+    }
+
+    const decreaseCartProduct = (id) => {
+        const findProduct = cart[0].filter(item => {
+            return id === item.id;
+        });
+
+        if(findProduct[0].quantity > 1) {
+            const productIndex = cart[0].findIndex(item => {
+                return id === item.id
+            })
+
+            const newCartItems = cart[0];
+            newCartItems[productIndex].quantity = newCartItems[productIndex].quantity - 1;
+            
+            const newTotal = cart[1] - newCartItems[productIndex].price;
+            const replaceProduct = newCartItems[productIndex];
+
+            fetch(`/api/cart/remove/${id}`, {
+                method: 'PUT',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(replaceProduct)
+              }).then(res => {
+                setCart([newCartItems, newTotal]);
+              })
+        } else {
+            removeFromCart(id);
+        }
     }
 
 
@@ -121,10 +186,10 @@ export const ProductsProvider = (props) => {
         cart: cart,
         getProducts: getProducts,
         getCurrentProduct: getCurrentProduct,
-        resetCurrentProduct: resetCurrentProduct,
         getCart: getCart,
         postToCart: postToCart,
-        removeFromCart: removeFromCart
-    }}
-    >{props.children}</ProductsContext.Provider>)
+        removeFromCart: removeFromCart,
+        increaseCartProduct: increaseCartProduct,
+        decreaseCartProduct: decreaseCartProduct
+    }}>{props.children}</ProductsContext.Provider>)
 }

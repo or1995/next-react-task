@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: flex-start;
     flex: 1;
+    margin-bottom: 3rem;
 
     &_header {
         width: 100%;
@@ -49,6 +50,24 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         gap: 2rem;
+
+        @media screen and (max-width: 1919px) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @media screen and (max-width: 1025px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media screen and (max-width: 445px) {
+            grid-template-columns: 1fr;
+        }
+    
+    }
+
+    @media screen and (max-width: 1025px) {
+        flex: auto;
+        width: 100%;
     }
 
 }

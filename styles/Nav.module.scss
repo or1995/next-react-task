@@ -12,5 +12,14 @@
     justify-content: space-between;
     z-index: 100000000;
     background-color: $primary-white-color;
+
+    @media screen and (max-width: 1500px) {
+        width: 90vw;
+    }
+
+    @media screen and (max-width: 1366px) {
+        width: 100vw;
+        padding: 0 2rem;
+    }
 }
 

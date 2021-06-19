@@ -6,6 +6,19 @@ html,body {
   font-family: $primary-font;
   background-color: $primary-white-color;
   color: $text-dark-color;
+  overflow-x: hidden;
+
+  @media screen and (max-width: 1366px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 1180px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 830px) {
+    font-size: 11px;
+  }
 }
 
 a {

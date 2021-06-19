@@ -8,7 +8,7 @@ import ProductDescription from '../../components/ProductDescription';
 import classes from '../../styles/[id].module.scss';
 
 const Product = () => {
-    const {getCurrentProduct, resetCurrentProduct, currentProduct, getProducts, getCart} = useContext(ProductsContext);
+    const {getCurrentProduct, currentProduct, getProducts, getCart} = useContext(ProductsContext);
     const router = useRouter();
     const id = router.query.id;
 
@@ -23,8 +23,6 @@ const Product = () => {
 
   useEffect(() => {
     getCurrentProduct(id);
-
-    return resetCurrentProduct();
   },[id])
 
   return currentProduct ?

@@ -12,6 +12,15 @@
     position: relative;
     overflow: hidden;
 
+    @media screen and (max-width: 1500px) {
+        width: 90vw;
+    }
+
+    @media screen and (max-width: 1366px) {
+        width: 100%;
+        padding: 8rem 4rem;
+    }
+
 
     &_title {
         width: 100%;

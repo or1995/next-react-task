@@ -5,8 +5,8 @@ import {ProductsContext} from '../context/ProductsContext';
 
 import classes from '../styles/CartItem.module.scss';
 
-const CartItem = ({item}) => {
-    const {increaseCartProduct, decreaseCartProduct} = useContext(ProductsContext);
+const CartItem = ({item, noedit}) => {
+    const {increaseCartProduct, decreaseCartProduct, removeFromCart} = useContext(ProductsContext);
 
     return (
         <div className={classes.cartitem}>
@@ -19,11 +19,12 @@ const CartItem = ({item}) => {
                 <h3>{item.title}</h3>
                 <h4>{item.price}$ x {item.quantity}</h4>
             </div>
-            <div className={classes.cartitem_controls}>
+            {!noedit ? <div className={classes.cartitem_controls}>
                 <button onClick={() => {decreaseCartProduct(item.id)}}>-</button>
                 <h3>{item.quantity}</h3>
                 <button onClick={() => {increaseCartProduct(item.id)}}>+</button>
-            </div>
+                <button onClick={() => {removeFromCart(item.id)}} className={classes.cartitem_controls_delete}>Delete</button>
+            </div>: null}
         </div>
     )
 } 

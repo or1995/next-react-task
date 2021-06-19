@@ -10,16 +10,22 @@ export default function handler(req, res) {
             res.status(404).json({error: 'product not found'})
         }      
     } else if (req.method === 'DELETE') {
-        cart = cart.filter(item => item.id !== req.query.id);
+        const deletedItem = cart[0].filter(item => item.id === parseInt(req.query.id))[0];
+
+        cart[0] = cart[0].filter(item => item.id !== parseInt(req.query.id));
+
+        cart[1] = cart[1] - (deletedItem.quantity * deletedItem.price);
+
         res.status(200).json(cart);
-    
     } else if (req.method === 'PUT') {
+        console.log('-----------------------------------');
+        console.log(req.query.id, cart);
+        const id = parseInt(req.query.id);
         const currentIndex = cart[0].findIndex(item => {
-            return item.id === parseInt(req.query.id);
+            return item.id === id;
         })
 
         cart[0][currentIndex].quantity = cart[0][currentIndex].quantity + 1;
-        console.log(cart[1] + cart[0][currentIndex].price)
         cart[1] = cart[1] + cart[0][currentIndex].price;
         res.status(200).json(cart);
     }
